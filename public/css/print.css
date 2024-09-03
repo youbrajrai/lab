@@ -1,0 +1,294 @@
+body {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.w-65 {
+    width: 65%;
+}
+
+.main-report h2 {
+    font-size: 1.75rem;
+}
+
+.main-report h3 {
+    font-size: 1.5rem;
+}
+
+.main-report h4 {
+    font-size: 1.35rem;
+}
+
+.main-report h5 {
+    font-size: 1.25rem;
+}
+
+.main-report h6 {
+    font-size: 1.1rem;
+}
+
+.main-report p {
+    margin-bottom: 0;
+}
+
+.main-report span {
+    display: block;
+    font-size: 0.75rem;
+}
+
+.main-report .text-sign {
+    font-size: 0.9rem;
+}
+
+/*** Second Report ***/
+.second-report h1, .single-report h1 {
+    font-size: 2.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.second-report h2, .single-report h2 {
+    font-size: 2.25rem;
+    margin-top: 2.25rem;
+}
+
+.second-report h3, .single-report h3 {
+    font-size: 2rem;
+}
+
+.second-report h4, .single-report h4 {
+    font-size: 1.75rem;
+}
+
+.second-report h5, .single-report h5 {
+    font-size: 1.5rem;
+}
+
+.second-report h6, .single-report h6 {
+    font-size: 1.25rem;
+}
+
+.ml-n4rem {
+    margin-left: -4rem;
+}
+
+.second-report p, .single-report p {
+    font-size: 1.1rem;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.single-report .sig-text {
+    margin-top: 12rem;
+}
+
+.second-report span, .single-report span {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+.single-report li {
+    font-size: 1.25rem;
+}
+
+#radiologist-text {
+    margin-top: 10rem;
+}
+
+.main-report .table.gs-0 th:first-child, .main-report  .table.gs-0 td:first-child {
+    width: 40%;
+}
+
+.second-report .table.gs-0 th:first-child, .second-report  .table.gs-0 td:first-child {
+    width: 40%;
+}
+
+.second-report .table.gs-0 th:nth-child(2), .second-report  .table.gs-0 td:nth-child(2) {
+    width: 25%;
+}
+
+.second-report .table.gs-0 th:last-child, .second-report  .table.gs-0 td:last-child {
+    width: 40%;
+}
+
+.second-report  .table.gs-0 .multi-row td:last-child {
+    width: 100%;
+}
+
+.row > .col-1, .row > .col-2, .row > .col-3 {
+    padding: 0 .5rem;
+}
+
+.report {
+    width: 80vw;
+    min-width: 80vw;
+    margin: 20px auto;
+}
+
+.title {
+    background-color: #000;
+    display: inline-block;
+    padding: 5px 15px;
+    color: #fff;
+}
+
+.table.gy-3 th, .table.gy-3 td {
+    padding-top: 0.1rem;
+    padding-bottom: 0.1rem;
+}
+
+.tab-pane img {
+    width: 8rem;
+    height: auto;
+}
+
+.tab-pane .subject-img img {
+    width: 12rem;
+}
+
+.sticky-panel {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media print {
+    body {
+        margin: 0 auto !important;
+        width: 1320px;
+        zoom : 100% !important;
+        visibility: hidden;
+        background-color: #fff;
+    }
+
+    #print_id {
+        visibility: visible;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .card-body {
+        width: 100%;
+    }
+
+    .main-report h1 {
+        font-size: 3.25rem;
+    }
+
+    .main-report h2 {
+        font-size: 3rem;
+    }
+
+    .main-report h3 {
+        font-size: 2.75rem;
+    }
+
+    .main-report h4 {
+        font-size: 2rem;
+    }
+
+    .main-report h5 {
+        font-size: 1.8rem;
+    }
+
+    .main-report h6 {
+        font-size: 1.6rem;
+    }
+
+    .main-report p, .table.gs-0 th, .table.gs-0 td {
+        font-size: 1.3rem !important;
+    }
+
+    .main-report span {
+        display: block;
+        font-size: 0.975rem;
+    }
+
+    /*** Second Report ***/
+    .second-report h1, .single-report h1 {
+        font-size: 3.25rem;
+        letter-spacing: 1px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    .second-report h2, .single-report h2 {
+        font-size: 2.75rem;
+        margin-top: 2.25rem;
+    }
+    
+    .second-report h3, .single-report h3 {
+        font-size: 2.5rem;
+    }
+    
+    .second-report h4, .single-report h4 {
+        font-size: 2.25rem;
+    }
+
+    .second-report h6, .single-report h6 {
+        font-size: 2rem;
+    }
+
+    .second-report p, .single-report p {
+        font-size: 1.7rem;
+        margin-bottom: 0;
+        font-weight: 500;
+    }
+
+    .second-report span {
+        display: block;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    
+    .single-report span {
+        display: block;
+        font-size: 1.75rem;
+        font-weight: 500;
+    }
+    
+    .single-report li {
+        font-size: 2.5rem;
+    }
+    
+    #radiologist-text {
+        margin-top: 10rem;
+    }
+
+    .second-report .ps-text span {
+        margin-top: 13rem;
+    }
+    
+    .single-report .sig-text {
+        margin-top: 20rem;
+    }
+
+    .main-report .table.gs-0 th:first-child, .main-report  .table.gs-0 td:first-child {
+        width: 30%;
+    }
+
+    .second-report .table.gs-0 th:first-child, .second-report  .table.gs-0 td:first-child {
+        width: 35%;
+    }
+
+    .tab-pane img {
+        width: 12rem;
+        height: auto;
+        margin-right: 10rem;
+    }
+    
+    .tab-pane .subject-img img {
+        width: 18rem;
+        margin: 0 auto;
+    }
+
+    .table-responsive .logo {
+        width: 6rem;
+    }
+}

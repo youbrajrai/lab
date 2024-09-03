@@ -1,0 +1,76 @@
+.arrow-steps .step {
+    font-size: 14px;
+    text-align: center;
+    color: #666;
+    cursor: default;
+    margin: 0 3px;
+    padding: 14px 12px 14px 24px;
+    min-width: 100px;
+    float: left;
+    position: relative;
+    background-color: var(--bs-primary);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+.arrow-steps .step:after,
+.arrow-steps .step:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    right: -12px;
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 12px solid var(--bs-primary);
+    z-index: 2;
+    transition: border-color 0.2s ease;
+}
+.arrow-steps .step:before {
+    right: auto;
+    left: 0;
+    border-left: 12px solid #fff;
+    z-index: 0;
+}
+.arrow-steps .step:first-child:before {
+    border: none;
+}
+.arrow-steps .step:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.arrow-steps .step a {
+    position: relative;
+    color: #fff;
+    padding: 0;
+}
+.arrow-steps .step a:before {
+    opacity: 0;
+    content: "✔";
+    position: absolute;
+    top: -2px;
+    left: -20px;
+    color: #06ac77;
+}
+.arrow-steps .step.done a:before {
+    opacity: 1;
+    -webkit-transition: opacity 0.3s ease 0.5s;
+    -moz-transition: opacity 0.3s ease 0.5s;
+    -ms-transition: opacity 0.3s ease 0.5s;
+    transition: opacity 0.3s ease 0.5s;
+}
+.arrow-steps .step.current {
+    color: #fff;
+    background-color: #ff5050;
+}
+.arrow-steps .step.current:after {
+    border-left: 12px solid #ff5050;
+}
+@media (max-width: 765px) {
+    .arrow-steps .step {
+        min-width: 35px;
+    }
+}

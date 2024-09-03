@@ -1,0 +1,86 @@
+[data-kt-app-layout="dark-sidebar"]
+.app-sidebar
+.menu
+.menu-item.show
+> .menu-link {
+    background-color: #f1416c;
+}
+
+[data-kt-app-layout="dark-sidebar"] .app-sidebar .menu .menu-item .menu-link {
+    color: #fff;
+}
+
+[data-kt-app-layout="dark-sidebar"]
+.app-sidebar
+.menu
+.menu-item
+.menu-link
+.menu-title {
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.app-header-menu .menu .menu-item .menu-link .menu-title {
+    font-size: 1rem;
+}
+
+[data-kt-app-layout="dark-sidebar"] .app-sidebar .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here), [data-kt-app-layout="dark-sidebar"] .app-sidebar .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) {
+    background-color: rgba(63, 66, 84, 0.35);
+}
+
+.app-header-menu .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here), .app-header-menu .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) {
+    background-color: rgba(63, 66, 84, 0.35);
+}
+
+.app-header-menu .menu .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here) .menu-title, .app-header-menu .menu .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) .menu-title {
+    color: #fff;
+}
+
+.table:not(.table-bordered).table-row-dashed tr {
+	border-bottom-color: #c5c5c5;
+}
+
+.table:not(.table-bordered).table-column-dashed th, .table:not(.table-bordered).table-column-dashed td {
+	border-right-width: 1px;
+	border-right-style: dashed;
+	border-right-color: #c5c5c5;
+	color: #fff;
+}
+
+.table:not(.table-bordered).table-column-dashed th {
+    background-color: #f1416c;
+}
+
+.table:not(.table-bordered).table-column-dashed td {
+	background-color: #f5f8fa;
+}
+
+@media (min-width: 768px) {
+    .h-md-35 {
+        height: 35% !important;
+    }
+        
+    .h-md-65 {
+        height: 65% !important;
+    }
+    
+    .h-md-90 {
+        height: 90% !important;
+    }
+    
+    h1 {
+        font-size: 2.75rem;
+        font-weight: 500;
+    }
+    
+    .print-header h1 {
+        font-size: 3.75rem;
+        font-weight: 500;
+    }
+}
+
+@media (min-width: 1360px) and (max-width: 1450px) {
+    .print-header h1 {
+        font-size: 2.75rem;
+    }
+}
