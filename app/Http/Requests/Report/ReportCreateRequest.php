@@ -22,12 +22,12 @@ class ReportCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'cno'=>['required'],
-            'name'  => ['required', 'max:255'],
-            'age'  => ['required'],
-            'sex'  => ['required'],
+            'cno' => ['required'],
+            'name' => ['required', 'max:255'],
+            'age' => ['required'],
+            'sex' => ['required'],
             'marital_status' => ['required'],
-            'contact'=>['required'],
+            'contact' => ['required'],
             'nationality' => ['required'],
             // 'job_country'   => ['required'],
             'passport_number' => ['nullable'],
@@ -37,6 +37,7 @@ class ReportCreateRequest extends FormRequest
             'medical_examination_date' => ['required'],
             'referred_by' => ['nullable'],
             'user_id' => ['required'],
+            'forms' => ['required'],
         ];
     }
 }

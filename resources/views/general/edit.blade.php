@@ -27,7 +27,7 @@
                             <div class="card card-flush mb-10">
                                 <div class="card-body">
                                     <div class="table-responsive p-10">
-                                        @include('partials.formNav')
+                                        @include('partials.testFormNav')
 
                                         <form data-kt-search-element="form" class="w-100 position-relative mt-10"
                                             method="POST"
@@ -68,11 +68,11 @@
 
                                                         <div class="col-lg-4">
                                                             <h6>Pulse</h6>
-                                                            
+
                                                             {{-- <input type="number" step="any" class="form-control"
                                                                 name="pulse" value="{{ old('pulse', $general) }}"
                                                                 placeholder="Pulse" data-kt-search-element="input" /> --}}
-                                                                
+
                                                                 <select name="pulse" aria-label="Select an Option"
                                                                 data-control="" data-placeholder="Pulse"
                                                                 class="form-select form-select-md form-select-solid">
@@ -101,12 +101,12 @@
 
                                                         <div class="col-lg-4">
                                                             <h6>Temperature</h6>
-                                                            
+
                                                             {{-- <input type="number" step="any" class="form-control"
                                                                 name="temperature"
                                                                 value="{{ old('temperature', $general) }}"
                                                                 placeholder="Temperature" data-kt-search-element="input" /> --}}
-                                                                
+
                                                                 <select name="temperature" aria-label="Select an Option"
                                                                 data-control="" data-placeholder="Temperature"
                                                                 class="form-select form-select-md form-select-solid">

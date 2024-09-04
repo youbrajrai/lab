@@ -29,7 +29,7 @@
                             <div class="card card-flush mb-10">
                                 <div class="card-body">
                                     <div class="table-responsive p-10">
-                                        @include('partials.formNav')
+                                        @include('partials.testFormNav')
 
                                         <form data-kt-search-element="form" class="w-100 position-relative mt-10"
                                             method="POST" action="{{ route('reports.generals.store', $report) }}">
@@ -69,12 +69,12 @@
 
                                                         <div class="col-lg-4">
                                                             <h6>Pulse</h6>
-                                                            
+
                                                             {{-- <input type="number" step="any" class="form-control"
                                                                 name="pulse" value="{{ old('pulse') }}"
                                                                 placeholder="Pulse" data-kt-search-element="input" /> --}}
-                                                                
-                                                                <select name="pulse" aria-label="Select an Option"
+
+                                                            <select name="pulse" aria-label="Select an Option"
                                                                 data-control="" data-placeholder="Pulse"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="68"
@@ -102,12 +102,12 @@
 
                                                         <div class="col-lg-4">
                                                             <h6>Temperature</h6>
-                                                            
+
                                                             {{-- <input type="number" step="any" class="form-control"
                                                                 name="temperature" value="{{ old('temperature') }}"
                                                                 placeholder="Temperature" data-kt-search-element="input" /> --}}
-                                                                
-                                                                <select name="temperature" aria-label="Select an Option"
+
+                                                            <select name="temperature" aria-label="Select an Option"
                                                                 data-control="" data-placeholder="Temperature"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="96"
@@ -152,7 +152,8 @@
                                                                 data-control="" data-placeholder="Jaundice"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('jaundice') == 0) selected @endif>Absent
+                                                                    @if (old('jaundice') == 0) selected @endif>
+                                                                    Absent
                                                                 </option>
                                                                 {{-- <option value="1"
                                                                     @if (old('jaundice') == 1) selected @endif>
@@ -171,7 +172,8 @@
                                                                 data-control="" data-placeholder="Paller"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('paller') == 0) selected @endif>Absent
+                                                                    @if (old('paller') == 0) selected @endif>
+                                                                    Absent
                                                                 </option>
                                                                 {{-- <option value="1"
                                                                     @if (old('paller') == 1) selected @endif>
@@ -190,7 +192,8 @@
                                                                 data-control="" data-placeholder="Cynosis"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('cynosis') == 0) selected @endif>Absent
+                                                                    @if (old('cynosis') == 0) selected @endif>
+                                                                    Absent
                                                                 </option>
                                                                 {{-- <option value="1"
                                                                     @if (old('cynosis') == 1) selected @endif>
@@ -209,7 +212,8 @@
                                                                 data-control="" data-placeholder="Clubbing"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('clubbing') == 0) selected @endif>Absent
+                                                                    @if (old('clubbing') == 0) selected @endif>
+                                                                    Absent
                                                                 </option>
                                                                 {{-- <option value="1"
                                                                     @if (old('clubbing') == 1) selected @endif>
@@ -228,7 +232,8 @@
                                                                 data-control="" data-placeholder="Odema"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('odema') == 0) selected @endif>Absent
+                                                                    @if (old('odema') == 0) selected @endif>
+                                                                    Absent
                                                                 </option>
                                                                 {{-- <option value="1"
                                                                     @if (old('odema') == 1) selected @endif>

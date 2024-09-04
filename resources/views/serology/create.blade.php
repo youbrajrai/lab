@@ -29,13 +29,12 @@
                             <div class="card card-flush mb-10">
                                 <div class="card-body">
                                     <div class="table-responsive p-10">
-                                        @include('partials.formNav')
+                                        @include('partials.testFormNav')
                                         <form data-kt-search-element="form" class="w-100 position-relative mt-10"
                                             method="POST" action="{{ route('serologies.store', $report) }}">
                                             @csrf
                                             <div class="tab-content">
-                                                <div class="tab-pane fade show active"
-                                                    id="kt_stats_widget_16_tab_1">
+                                                <div class="tab-pane fade show active" id="kt_stats_widget_16_tab_1">
                                                     <h3 class="mb-8">Serology</h3>
                                                     <div class="row gx-10 gy-8 mb-14">
                                                         <div class="col-lg-4">
@@ -46,9 +45,9 @@
                                                                 <option value="0"
                                                                     @if (old('hbs_ag') == 0) selected @endif>
                                                                     Negative</option>
-                                                                {{-- <option value="1"
+                                                                <option value="1"
                                                                     @if (old('hbs_ag') == 1) selected @endif>
-                                                                    Positive</option> --}}
+                                                                    Positive</option>
                                                             </select>
                                                             @error('hbs_ag')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -62,10 +61,11 @@
                                                                 data-control="" data-placeholder="Anti-HIV (1&amp;2)"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('anti_hiv') == 0) selected @endif>Negative</option>
-                                                                {{-- <option value="1"
+                                                                    @if (old('anti_hiv') == 0) selected @endif>
+                                                                    Negative</option>
+                                                                <option value="1"
                                                                     @if (old('anti_hiv') == 1) selected @endif>
-                                                                    Positive</option> --}}
+                                                                    Positive</option>
                                                             </select>
                                                             @error('anti_hiv')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -81,9 +81,9 @@
                                                                 <option value="0"
                                                                     @if (old('anti_hcv') == 0) selected @endif>
                                                                     Negative</option>
-                                                                {{-- <option value="1"
+                                                                <option value="1"
                                                                     @if (old('anti_hcv') == 1) selected @endif>
-                                                                    Positive</option> --}}
+                                                                    Positive</option>
                                                             </select>
                                                             @error('anti_hcv')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -99,9 +99,9 @@
                                                                 <option value="0"
                                                                     @if (old('vdrl') == 0) selected @endif>None
                                                                     Reactive</option>
-                                                                {{-- <option value="1"
+                                                                <option value="1"
                                                                     @if (old('vdrl') == 1) selected @endif>
-                                                                    Reactive</option> --}}
+                                                                    Reactive</option>
                                                             </select>
                                                             @error('vdrl')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -115,10 +115,11 @@
                                                                 data-control="" data-placeholder="TPHA"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('tpha') == 0) selected @endif>Negative</option>
-                                                                {{-- <option value="1"
+                                                                    @if (old('tpha') == 0) selected @endif>
+                                                                    Negative</option>
+                                                                <option value="1"
                                                                     @if (old('tpha') == 1) selected @endif>
-                                                                    Positive</option> --}}
+                                                                    Positive</option>
                                                             </select>
                                                             @error('tpha')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -163,7 +164,7 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
+
                                                         {{-- <div class="col-lg-4">
                                                             <h6>Malaria Parasite</h6>
                                                             <select name="malaria_parasite" aria-label="Select an Option"
@@ -182,7 +183,7 @@
                                                                 </span>
                                                             @enderror
                                                         </div> --}}
-                                                        
+
                                                     </div>
                                                 </div>
                                             </div>

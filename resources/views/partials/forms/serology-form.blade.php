@@ -18,8 +18,8 @@
                                                     <h6 class="mb-0 py-4">Anti-HIV (1&2)</h6>
                                                 </div>
                                                 <div class="col-3 mt-0">
-                                                    <select name="hiv_test" aria-label="Select an Option" data-control=""
-                                                        data-placeholder="HIV Test"
+                                                    <select name="hiv_test" aria-label="Select an Option"
+                                                        data-control="" data-placeholder="HIV Test"
                                                         class="form-select form-select-md form-select-solid">
                                                         <option value="-1">
                                                             None
@@ -174,8 +174,8 @@
                                                     <h6 class="mb-0 py-4">CRP</h6>
                                                 </div>
                                                 <div class="col-3 mt-0">
-                                                    <select name="crp" aria-label="Select an Option" data-control=""
-                                                        data-placeholder="CRP"
+                                                    <select name="crp" aria-label="Select an Option"
+                                                        data-control="" data-placeholder="CRP"
                                                         class="form-select form-select-md form-select-solid">
                                                         <option value="-1">
                                                             None
@@ -202,4 +202,3 @@
                     </div>
                 </div>
             </div>
-        

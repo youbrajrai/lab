@@ -36,7 +36,7 @@
                                                     <h3 class="mb-8">Applicant Info</h3>
 
                                                     <div class="row gx-10 gy-8 mb-14">
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <h6>Referred By</h6>
                                                             <select name="referred_by" aria-label="Select an Option"
@@ -44,16 +44,16 @@
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="" label="Select a referral ... "
                                                                     selected="selected" disabled></option>
-                                                                    
-                                                                    @foreach ($referrals as $key => $referral)
+
+                                                                @foreach ($referrals as $key => $referral)
                                                                     <option value="{{ $referral->id }}">
                                                                         {{ $referral->name }}</option>
                                                                 @endforeach
-                                                                    
+
                                                                 {{-- <option value="Casey Wells">Casey Wells</option>
                                                                 <option value="Coty Franey">Coty Franey</option>
                                                                 <option value="Madison Bird">Madison Bird</option> --}}
-                                                                
+
                                                             </select>
                                                             @error('referred_by')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -61,7 +61,7 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <h6>C.N.O.</h6>
                                                             <input type="text" class="form-control"
@@ -140,12 +140,11 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <h6>Contact</h6>
                                                             <input type="text" class="form-control" name="contact"
-                                                                placeholder="Contact"
-                                                                value = "{{ old('contact') }}"
+                                                                placeholder="Contact" value = "{{ old('contact') }}"
                                                                 data-kt-search-element="input" />
                                                             @error('contact')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -178,8 +177,10 @@
                                                         <div class="col-lg-4">
                                                             <h6>Passport No.</h6>
                                                             <input type="text" class="form-control"
-                                                                name="passport_number" value="{{ old('passport_number') }}"
-                                                                placeholder="Passport No." data-kt-search-element="input" />
+                                                                name="passport_number"
+                                                                value="{{ old('passport_number') }}"
+                                                                placeholder="Passport No."
+                                                                data-kt-search-element="input" />
                                                             @error('passport_number')
                                                                 <span class="invalid-feedback d-block" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -269,18 +270,26 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        <input type="hidden" name="report" value="1">
+                                                        {{-- <input type="hidden" name="report" value="1"> --}}
                                                         <div class="col-lg-4">
-        <h3>Select Tests</h3>
-        <div class="checkbox-group">
-            @foreach ($availableTests as $key => $label)
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="tests[]" value="{{ $key }}" id="{{ $key }}">
-                    <label class="form-check-label" for="{{ $key }}">{{ $label }}</label>
-                </div>
-            @endforeach
-        </div>
-    </div>
+                                                            <h3>Select Tests</h3>
+                                                            <div class="checkbox-group">
+                                                                @foreach ($availableTests as $key => $label)
+                                                                    <div class="form-check mb-2">
+                                                                        <input type="checkbox" class="form-check-input"
+                                                                            name="forms[]" value="{{ $key }}"
+                                                                            id="{{ $key }}">
+                                                                        <label class="form-check-label"
+                                                                            for="{{ $key }}">{{ $label }}</label>
+                                                                    </div>
+                                                                @endforeach
+                                                                @error('forms')
+                                                                    <span class="invalid-feedback d-block" role="alert">
+                                                                        <strong>{{ $message }}</strong>
+                                                                    </span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
 
                                                         <div class="col-lg-4 mt-15">
                                                             <button type="button" class="btn btn-primary"
@@ -339,9 +348,8 @@
                                                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}" />
                                                 <a href = "{{ route('reports.index') }}"
                                                     class="btn btn-sm fw-bold btn-danger">Cancel</a>
-                                                <button type="submit" class="btn btn-sm fw-bold btn-primary"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#kt_modal_new_target">Submit</button>
+                                                <button type="submit"
+                                                    class="btn btn-sm fw-bold btn-primary">Submit</button>
                                                 {{--                                            </div> --}}
 
                                             </div>

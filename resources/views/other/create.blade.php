@@ -29,13 +29,12 @@
                             <div class="card card-flush mb-10">
                                 <div class="card-body">
                                     <div class="table-responsive p-10">
-                                        @include('partials.formNav')
+                                        @include('partials.testFormNav')
                                         <form data-kt-search-element="form" class="w-100 position-relative mt-10"
                                             method="POST" action="{{ route('others.store', $report) }}">
                                             @csrf
                                             <div class="tab-content">
-                                                <div class="tab-pane fade show active"
-                                                    id="kt_stats_widget_16_tab_1">
+                                                <div class="tab-pane fade show active" id="kt_stats_widget_16_tab_1">
                                                     <h3 class="mb-8">Others</h3>
                                                     <div class="row gx-10 gy-8 mb-14" bis_skin_checked="1">
                                                         <div class="col-lg-4" bis_skin_checked="1">
@@ -46,9 +45,9 @@
                                                                 <option value="0"
                                                                     @if (old('opiates') == 0) selected @endif>
                                                                     Negative</option>
-                                                                {{-- <option value="1"
+                                                                <option value="1"
                                                                     @if (old('opiates') == 1) selected @endif>
-                                                                    Positive</option> --}}
+                                                                    Positive</option>
                                                             </select>
                                                             @error('opiates')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -64,9 +63,9 @@
                                                                 <option value="0"
                                                                     @if (old('cannabies') == 0) selected @endif>
                                                                     Negative</option>
-                                                                {{-- <option value="1"
+                                                                <option value="1"
                                                                     @if (old('cannabies') == 1) selected @endif>
-                                                                    Positive</option> --}}
+                                                                    Positive</option>
                                                             </select>
                                                             @error('cannabies')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -82,9 +81,9 @@
                                                                 <option value="0"
                                                                     @if (old('mantoux_test') == 0) selected @endif>
                                                                     Negative</option>
-                                                                {{-- <option value="1"
+                                                                <option value="1"
                                                                     @if (old('mantoux_test') == 1) selected @endif>
-                                                                    Positive</option> --}}
+                                                                    Positive</option>
                                                             </select>
                                                             @error('mantoux_test')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -103,9 +102,9 @@
                                                                     <option value="0"
                                                                         @if (old('urine_pregnancy_test') == 0) selected @endif>
                                                                         Negative</option>
-                                                                    {{-- <option value="1"
+                                                                    <option value="1"
                                                                         @if (old('urine_pregnancy_test') == 1) selected @endif>
-                                                                        Positive</option> --}}
+                                                                        Positive</option>
                                                                 </select>
                                                                 @error('urine_pregnancy_test')
                                                                     <span class="invalid-feedback d-block" role="alert">

@@ -29,13 +29,12 @@
                             <div class="card card-flush mb-10">
                                 <div class="card-body">
                                     <div class="table-responsive p-10">
-                                        @include('partials.formNav')
+                                        @include('partials.testFormNav')
                                         <form data-kt-search-element="form" class="w-100 position-relative mt-10"
                                             method="POST" action="{{ route('urines.store', $report) }}">
                                             @csrf
                                             <div class="tab-content">
-                                                <div class="tab-pane fade show active"
-                                                    id="kt_stats_widget_16_tab_1">
+                                                <div class="tab-pane fade show active" id="kt_stats_widget_16_tab_1">
                                                     <h3 class="mb-8">Urine Test</h3>
                                                     <div class="row gx-10 gy-8 mb-14" bis_skin_checked="1">
 
@@ -77,9 +76,9 @@
 
                                                         <div class="col-lg-4" bis_skin_checked="1">
                                                             <h6>Pus Cells /hpf</h6>
-                                                            <input type="text" class="form-control"
-                                                                name="pus_cells" value="{{ old('pus_cells') }}"
-                                                                placeholder="PusCells" data-kt-search-element="input">
+                                                            <input type="text" class="form-control" name="pus_cells"
+                                                                value="{{ old('pus_cells') }}" placeholder="PusCells"
+                                                                data-kt-search-element="input">
                                                             @error('pus_cells')
                                                                 <span class="invalid-feedback d-block" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -88,9 +87,9 @@
                                                         </div>
                                                         <div class="col-lg-4" bis_skin_checked="1">
                                                             <h6>RBCs /hpf</h6>
-                                                            <input type="text" class="form-control"
-                                                                name="rbc_hpf" value="{{ 'Nil' }}"
-                                                                placeholder="RBC-hpf" data-kt-search-element="input" readonly>
+                                                            <input type="text" class="form-control" name="rbc_hpf"
+                                                                value="{{ 'Nil' }}" placeholder="RBC-hpf"
+                                                                data-kt-search-element="input" readonly>
                                                             @error('rbc_hpf')
                                                                 <span class="invalid-feedback d-block" role="alert">
                                                                     <strong>{{ $message }}</strong>

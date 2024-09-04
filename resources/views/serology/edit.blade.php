@@ -30,9 +30,10 @@
                                 <div class="card-body">
                                     <div class="table-responsive p-10">
 
-                                        @include('partials.formNav')
+                                        @include('partials.testFormNav')
                                         <form data-kt-search-element="form" class="w-100 position-relative mt-10"
-                                            method="POST" action="{{ route('serologies.update', $serology->report_id) }}">
+                                            method="POST"
+                                            action="{{ route('serologies.update', $testData['serology']->report_id) }}">
                                             @csrf
                                             @method('PATCH')
                                             <div class="tab-content">
@@ -45,11 +46,11 @@
                                                                 data-control="" data-placeholder="HBs-Ag"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('hbs_ag', $serology) == 0) selected @endif>
+                                                                    @if (old('hbs_ag', $testData['serology']) == 0) selected @endif>
                                                                     Negative</option>
-                                                                {{-- <option value="1"
-                                                                    @if (old('hbs_ag', $serology) == 1) selected @endif>
-                                                                    Positive</option>  --}}
+                                                                <option value="1"
+                                                                    @if (old('hbs_ag', $testData['serology']) == 1) selected @endif>
+                                                                    Positive</option>
                                                             </select>
                                                             @error('hbs_ag')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -63,10 +64,11 @@
                                                                 data-control="" data-placeholder="Anti-HIV (1&amp;2)"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('anti_hiv', $serology) == 0) selected @endif>Negative</option>
-                                                                {{-- <option value="1"
-                                                                    @if (old('anti_hiv', $serology) == 1) selected @endif>
-                                                                    Positive</option> --}}
+                                                                    @if (old('anti_hiv', $testData['serology']) == 0) selected @endif>
+                                                                    Negative</option>
+                                                                <option value="1"
+                                                                    @if (old('anti_hiv', $testData['serology']) == 1) selected @endif>
+                                                                    Positive</option>
                                                             </select>
                                                             @error('anti_hiv')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -80,11 +82,11 @@
                                                                 data-control="" data-placeholder="Anti-HCV"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('anti_hcv', $serology) == 0) selected @endif>
+                                                                    @if (old('anti_hcv', $testData['serology']) == 0) selected @endif>
                                                                     Negative</option>
-                                                                {{-- <option value="1"
-                                                                    @if (old('anti_hcv', $serology) == 1) selected @endif>
-                                                                    Positive</option> --}}
+                                                                <option value="1"
+                                                                    @if (old('anti_hcv', $testData['serology']) == 1) selected @endif>
+                                                                    Positive</option>
                                                             </select>
                                                             @error('anti_hcv')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -98,11 +100,11 @@
                                                                 data-control="" data-placeholder="VDRL"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('vdrl', $serology) == 0) selected @endif>None
+                                                                    @if (old('vdrl', $testData['serology']) == 0) selected @endif>None
                                                                     Reactive</option>
-                                                                {{-- <option value="1"
-                                                                    @if (old('vdrl', $serology) == 1) selected @endif>
-                                                                    Reactive</option> --}}
+                                                                <option value="1"
+                                                                    @if (old('vdrl', $testData['serology']) == 1) selected @endif>
+                                                                    Reactive</option>
                                                             </select>
                                                             @error('vdrl')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -116,10 +118,11 @@
                                                                 data-control="" data-placeholder="TPHA"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('tpha', $serology) == 0) selected @endif>Negative</option>
-                                                                {{-- <option value="1"
-                                                                    @if (old('tpha', $serology) == 1) selected @endif>
-                                                                    Positive</option> --}}
+                                                                    @if (old('tpha', $testData['serology']) == 0) selected @endif>
+                                                                    Negative</option>
+                                                                <option value="1"
+                                                                    @if (old('tpha', $testData['serology']) == 1) selected @endif>
+                                                                    Positive</option>
                                                             </select>
                                                             @error('tpha')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -134,28 +137,28 @@
                                                                 data-placeholder="ABO-Blood Group &amp; Rh-type"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="O+ve"
-                                                                    @if (old('blood_group', $serology) == 'O+ve') selected @endif>O+ve
+                                                                    @if (old('blood_group', $testData['serology']) == 'O+ve') selected @endif>O+ve
                                                                 </option>
                                                                 <option value="A+ve"
-                                                                    @if (old('blood_group', $serology) == 'A+ve') selected @endif>A+ve
+                                                                    @if (old('blood_group', $testData['serology']) == 'A+ve') selected @endif>A+ve
                                                                 </option>
                                                                 <option value="B+ve"
-                                                                    @if (old('blood_group', $serology) == 'B+ve') selected @endif>B+ve
+                                                                    @if (old('blood_group', $testData['serology']) == 'B+ve') selected @endif>B+ve
                                                                 </option>
                                                                 <option value="AB+ve"
-                                                                    @if (old('blood_group', $serology) == 'AB+ve') selected @endif>
+                                                                    @if (old('blood_group', $testData['serology']) == 'AB+ve') selected @endif>
                                                                     AB+ve</option>
                                                                 <option value="O-ve"
-                                                                    @if (old('blood_group', $serology) == 'O-ve') selected @endif>O-ve
+                                                                    @if (old('blood_group', $testData['serology']) == 'O-ve') selected @endif>O-ve
                                                                 </option>
                                                                 <option value="A-ve"
-                                                                    @if (old('blood_group', $serology) == 'A-ve') selected @endif>A-ve
+                                                                    @if (old('blood_group', $testData['serology']) == 'A-ve') selected @endif>A-ve
                                                                 </option>
                                                                 <option value="B-ve"
-                                                                    @if (old('blood_group', $serology) == 'B-ve') selected @endif>B-ve
+                                                                    @if (old('blood_group', $testData['serology']) == 'B-ve') selected @endif>B-ve
                                                                 </option>
                                                                 <option value="AB-ve"
-                                                                    @if (old('blood_group', $serology) == 'AB-ve') selected @endif>
+                                                                    @if (old('blood_group', $testData['serology']) == 'AB-ve') selected @endif>
                                                                     AB-ve</option>
                                                             </select>
                                                             @error('blood_group')
@@ -164,17 +167,17 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
+
                                                         {{-- <div class="col-lg-4">
                                                             <h6>Malaria Parasite</h6>
                                                             <select name="malaria_parasite" aria-label="Select an Option"
                                                                 data-control="" data-placeholder="Malaria Parasite"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('malaria_parasite', $serology) == 0) selected @endif>
+                                                                    @if (old('malaria_parasite', $testData['serology']) == 0) selected @endif>
                                                                     Absent</option>
                                                                 <option value="1"
-                                                                    @if (old('malaria_parasite', $serology) == 1) selected @endif>
+                                                                    @if (old('malaria_parasite', $testData['serology']) == 1) selected @endif>
                                                                     Present</option>
                                                             </select>
                                                             @error('malaria_parasite')
@@ -183,7 +186,7 @@
                                                                 </span>
                                                             @enderror
                                                         </div> --}}
-                                                        
+
                                                     </div>
                                                 </div>
                                             </div>

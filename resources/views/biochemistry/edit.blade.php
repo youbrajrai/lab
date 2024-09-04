@@ -29,21 +29,22 @@
                             <div class="card card-flush mb-10">
                                 <div class="card-body">
                                     <div class="table-responsive p-10">
-                                        @include('partials.formNav')
+                                        @include('partials.testFormNav')
                                         <form data-kt-search-element="form" class="w-100 position-relative mt-10"
                                             method="POST"
-                                            action="{{ route('biochemistries.update', $biochemistry->report_id) }}">
+                                            action="{{ route('biochemistries.update', $testData['biochemistry']->report_id) }}">
                                             @csrf
                                             @method('PATCH')
                                             <div class="tab-content">
                                                 <div class="tab-pane fade show active" id="kt_stats_widget_16_tab_1">
                                                     <h3 class="mb-8">Biochemistry</h3>
                                                     <div class="row gx-10 gy-8 mb-14">
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <h6>Urea</h6>
                                                             <input type="number" step="any" class="form-control"
-                                                                name="urea" value="{{ old('urea', $biochemistry) }}"
+                                                                name="urea"
+                                                                value="{{ old('urea', $testData['biochemistry']) }}"
                                                                 placeholder="Urea" data-kt-search-element="input">
                                                             @error('urea')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -51,12 +52,12 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <h6>Creatinine</h6>
                                                             <input type="number" step="any" class="form-control"
                                                                 name="creatinine"
-                                                                value="{{ old('creatinine', $biochemistry) }}"
+                                                                value="{{ old('creatinine', $testData['biochemistry']) }}"
                                                                 placeholder="Creatinine" data-kt-search-element="input">
                                                             @error('creatinine')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -64,11 +65,11 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
+
                                                         {{-- <div class="col-lg-4">
                                                             <h6>Sodium</h6>
                                                             <input type="number" step="any" class="form-control"
-                                                                name="sodium" value="{{ old('sodium', $biochemistry) }}"
+                                                                name="sodium" value="{{ old('sodium', $testData['biochemistry']) }}"
                                                                 placeholder="Sodium" data-kt-search-element="input">
                                                             @error('sodium')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -76,12 +77,12 @@
                                                                 </span>
                                                             @enderror
                                                         </div> --}}
-                                                        
+
                                                         {{-- <div class="col-lg-4">
                                                             <h6>Potassium</h6>
                                                             <input type="number" step="any" class="form-control"
                                                                 name="potassium"
-                                                                value="{{ old('potassium', $biochemistry) }}"
+                                                                value="{{ old('potassium', $testData['biochemistry']) }}"
                                                                 placeholder="Potassium" data-kt-search-element="input">
                                                             @error('potassium')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -89,12 +90,12 @@
                                                                 </span>
                                                             @enderror
                                                         </div> --}}
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <h6>Blood Sugar</h6>
                                                             <input type="number" step="any" class="form-control"
                                                                 name="blood_sugar"
-                                                                value="{{ old('blood_sugar', $biochemistry) }}"
+                                                                value="{{ old('blood_sugar', $testData['biochemistry']) }}"
                                                                 placeholder="Blood Sugar" data-kt-search-element="input">
                                                             @error('blood_sugar')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -102,12 +103,12 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <h6>Bilirubin (Total/Direct)</h6>
                                                             <input type="number" step="any" class="form-control"
                                                                 name="sr_bilirubin_total_direct"
-                                                                value="{{ old('sr_bilirubin_total_direct', $biochemistry) }}"
+                                                                value="{{ old('sr_bilirubin_total_direct', $testData['biochemistry']) }}"
                                                                 placeholder="Sr. Bilirubin (Total/Direct)"
                                                                 data-kt-search-element="input">
                                                             @error('sr_bilirubin_total_direct')
@@ -116,12 +117,12 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
+
                                                         {{-- <div class="col-lg-4">
                                                             <h6>Sr. Bilirubin Total</h6>
                                                             <input type="number" step="any" class="form-control"
                                                                 name="sr_bilirubin_total"
-                                                                value="{{ old('sr_bilirubin_total', $biochemistry) }}"
+                                                                value="{{ old('sr_bilirubin_total', $testData['biochemistry']) }}"
                                                                 placeholder="Sr. Bilirubin Total"
                                                                 data-kt-search-element="input">
                                                             @error('sr_bilirubin_total')
@@ -130,12 +131,12 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <h6>Sr. Bilirubin Direct</h6>
                                                             <input type="number" step="any" class="form-control"
                                                                 name="sr_bilirubin_direct"
-                                                                value="{{ old('sr_bilirubin_direct', $biochemistry) }}"
+                                                                value="{{ old('sr_bilirubin_direct', $testData['biochemistry']) }}"
                                                                 placeholder="Sr. Bilirubin Direct"
                                                                 data-kt-search-element="input">
                                                             @error('sr_bilirubin_direct')
@@ -144,12 +145,12 @@
                                                                 </span>
                                                             @enderror
                                                         </div> --}}
-                                                        
+
                                                         {{-- <div class="col-lg-4">
                                                             <h6>Alkaline Phosphatase</h6>
                                                             <input type="number" step="any" class="form-control"
                                                                 name="alkaline_phosphatase"
-                                                                value="{{ old('alkaline_phosphatase', $biochemistry) }}"
+                                                                value="{{ old('alkaline_phosphatase', $testData['biochemistry']) }}"
                                                                 placeholder="Alkaline Phosphatase"
                                                                 data-kt-search-element="input">
                                                             @error('alkaline_phosphatase')
@@ -158,11 +159,12 @@
                                                                 </span>
                                                             @enderror
                                                         </div> --}}
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <h6>SGPT</h6>
                                                             <input type="number" step ="any" class="form-control"
-                                                                name="sgpt" value="{{ old('sgpt', $biochemistry) }}"
+                                                                name="sgpt"
+                                                                value="{{ old('sgpt', $testData['biochemistry']) }}"
                                                                 placeholder="SGPT" data-kt-search-element="input">
                                                             @error('sgpt')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -170,11 +172,12 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <h6>SGOT</h6>
                                                             <input type="number" step="any" class="form-control"
-                                                                name="sgot" value="{{ old('sgot', $biochemistry) }}"
+                                                                name="sgot"
+                                                                value="{{ old('sgot', $testData['biochemistry']) }}"
                                                                 placeholder="SGOT" data-kt-search-element="input">
                                                             @error('sgot')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -182,12 +185,12 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
+
                                                         {{-- <div class="col-lg-4">
                                                             <h6>Fasting Blood Sugar</h6>
                                                             <input type="number" step="any" class="form-control"
                                                                 name="fasting_blood_sugar"
-                                                                value="{{ old('fasting_blood_sugar', $biochemistry) }}"
+                                                                value="{{ old('fasting_blood_sugar', $testData['biochemistry']) }}"
                                                                 placeholder="Fasting Blood Sugar"
                                                                 data-kt-search-element="input">
                                                             @error('fasting_blood_sugar')
@@ -196,12 +199,12 @@
                                                                 </span>
                                                             @enderror
                                                         </div> --}}
-                                                        
+
                                                         {{-- <div class="col-lg-4">
                                                             <h6>Blood Urea</h6>
                                                             <input type="number" step="any" class="form-control"
                                                                 name="blood_urea"
-                                                                value="{{ old('blood_urea', $biochemistry) }}"
+                                                                value="{{ old('blood_urea', $testData['biochemistry']) }}"
                                                                 placeholder="Blood Urea" data-kt-search-element="input">
                                                             @error('blood_urea')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -209,7 +212,7 @@
                                                                 </span>
                                                             @enderror
                                                         </div> --}}
-                                                        
+
                                                     </div>
                                                 </div>
                                             </div>

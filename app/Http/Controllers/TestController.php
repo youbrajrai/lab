@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Report\ReportUpdateRequest;
+use App\Models\User;
 use App\Models\Other;
 use App\Models\Urine;
 use App\Models\Report;
@@ -36,9 +38,9 @@ class TestController extends Controller
     public function processTests(Request $request)
     {
         $testData = $request->all();
-    
+
         \Log::info('Received test data: ', $testData);
-    
+
         if (isset($testData['test_type'])) {
             foreach ($testData['test_type'] as $type) {
                 \Log::info('Processing test type: ', ['type' => $type]);
@@ -52,7 +54,7 @@ class TestController extends Controller
                             \Log::warning('Biochemistry data not found in request.');
                         }
                         break;
-    
+
                     case 'hematology':
                         if (isset($testData['hematology'])) {
                             $hematologyData = $testData['hematology'];
@@ -62,7 +64,7 @@ class TestController extends Controller
                             \Log::warning('Hematology data not found in request.');
                         }
                         break;
-    
+
                     // Add cases for other test types
                     default:
                         \Log::warning('Unknown test type: ', ['type' => $type]);
@@ -72,15 +74,15 @@ class TestController extends Controller
         } else {
             \Log::warning('No test types found in request.');
         }
-    
+
         return redirect()->back()->with('success', 'Tests saved successfully.');
     }
-    
+
 
     public function handleBiochemistryTest(array $biochemistryData)
     {
         \Log::info('Handling biochemistry data: ', $biochemistryData);
-    
+
         $validatedData = Validator::make($biochemistryData, [
             'user_id' => ['required', 'numeric'],
             'blood_sugar_f' => ['required', 'numeric'],
@@ -90,16 +92,16 @@ class TestController extends Controller
             'blood_urea' => ['required', 'numeric'],
             's_ceratinine' => ['required', 'numeric'],
         ])->validate();
-    
+
         $biochemistryReport = BiochemistryReport::create($validatedData);
-    
-        return  redirect()->back()->with('status', 'Biochemistry Report Data added successfully');
+
+        return redirect()->back()->with('status', 'Biochemistry Report Data added successfully');
     }
-    
+
     public function handleHematologyTest(array $hematologyData)
     {
         \Log::info('Handling hematology data: ', $hematologyData);
-    
+
         $validatedData = Validator::make($hematologyData, [
             'wbc' => ['required', 'numeric'],
             'hemoglobin' => ['required', 'numeric'],
@@ -110,12 +112,12 @@ class TestController extends Controller
             'monocytes' => ['required', 'numeric'],
             'basophils' => ['required', 'numeric'],
         ])->validate();
-    
+
         $hematologyReport = Hematology::create($validatedData);
-    
+
         return redirect()->back()->with('status', 'Hematology Report Data added successfully');
 
-    }  
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -125,38 +127,107 @@ class TestController extends Controller
         $countries = CountryListFacade::getList('en');
 
         $districts = [
-            'Achham', 'Arghakhanchi', 'Baglung', 'Baitadi', 'Bajhang', 'Bajura', 'Banke', 'Bara', 'Bardiya', 'Bhaktapur',
-            'Bhojpur', 'Chitwan', 'Dadeldhura', 'Dailekh', 'Dang', 'Darchula', 'Dhading', 'Dhankuta', 'Dhanusha', 'Dolakha',
-            'Dolpa', 'Doti', 'Rukum East', 'Gorkha', 'Gulmi', 'Humla', 'Ilam', 'Jajarkot', 'Jhapa', 'Jumla',
-            'Kailali', 'Kalikot', 'Kanchanpur', 'Kapilvastu', 'Kaski', 'Kathmandu', 'Kavrepalanchok', 'Khotang', 'Lalitpur', 'Lamjung',
-            'Mahottari', 'Makwanpur', 'Manang', 'Morang', 'Mugu', 'Mustang', 'Myagdi', 'Nawalparasi', 'Parasi', 'Nuwakot',
-            'Okhaldhunga', 'Palpa', 'Panchthar', 'Parbhat', 'Parsa', 'Pyuthan', 'Ramechhap', 'Rasuwa', 'Rautahat', 'Rolpa',
-            'Rupandehi', 'Salyan', 'Sankhuwasabha', 'Saptari', 'Sarlahi', 'Sindhuli', 'Sindhupalchowk', 'Siraha', 'Solukhumbu', 'Sunsari',
-            'Surkhet', 'Syangja', 'Tanahun', 'Taplejung', 'Terhrathum', 'Udayapur', 'Rukum West'
+            'Achham',
+            'Arghakhanchi',
+            'Baglung',
+            'Baitadi',
+            'Bajhang',
+            'Bajura',
+            'Banke',
+            'Bara',
+            'Bardiya',
+            'Bhaktapur',
+            'Bhojpur',
+            'Chitwan',
+            'Dadeldhura',
+            'Dailekh',
+            'Dang',
+            'Darchula',
+            'Dhading',
+            'Dhankuta',
+            'Dhanusha',
+            'Dolakha',
+            'Dolpa',
+            'Doti',
+            'Rukum East',
+            'Gorkha',
+            'Gulmi',
+            'Humla',
+            'Ilam',
+            'Jajarkot',
+            'Jhapa',
+            'Jumla',
+            'Kailali',
+            'Kalikot',
+            'Kanchanpur',
+            'Kapilvastu',
+            'Kaski',
+            'Kathmandu',
+            'Kavrepalanchok',
+            'Khotang',
+            'Lalitpur',
+            'Lamjung',
+            'Mahottari',
+            'Makwanpur',
+            'Manang',
+            'Morang',
+            'Mugu',
+            'Mustang',
+            'Myagdi',
+            'Nawalparasi',
+            'Parasi',
+            'Nuwakot',
+            'Okhaldhunga',
+            'Palpa',
+            'Panchthar',
+            'Parbhat',
+            'Parsa',
+            'Pyuthan',
+            'Ramechhap',
+            'Rasuwa',
+            'Rautahat',
+            'Rolpa',
+            'Rupandehi',
+            'Salyan',
+            'Sankhuwasabha',
+            'Saptari',
+            'Sarlahi',
+            'Sindhuli',
+            'Sindhupalchowk',
+            'Siraha',
+            'Solukhumbu',
+            'Sunsari',
+            'Surkhet',
+            'Syangja',
+            'Tanahun',
+            'Taplejung',
+            'Terhrathum',
+            'Udayapur',
+            'Rukum West'
         ];
-          $availableTests = [
+        $availableTests = [
             'hematology' => 'Hematology',
             'biochemistry' => 'Biochemistry',
             'serology' => 'Serology',
             'urine' => 'Urine',
-            'liver' => 'Liver',
-            'kidney' => 'Kidney',
-            'lipid' => 'Lipid',
-            'stool' => 'Stool',
-            'mantoux' => 'Mantoux',
-            'pregnancy' => 'Pregnancy',
-            'xray' => 'X-Ray',
-            'other' => 'Other'
+            'other' => 'Other',
+            // 'liver' => 'Liver',
+            // 'kidney' => 'Kidney',
+            // 'lipid' => 'Lipid',
+            // 'stool' => 'Stool',
+            // 'mantoux' => 'Mantoux',
+            // 'xray' => 'X-Ray',
+            // 'other' => 'Other'
         ];
 
-        
+
         $referrals = Referral::query()->orderBy('name', 'asc')->get();
 
         return view('test-report.create', [
-            'countries'     => $countries,
-            'districts'     => $districts,
-            'report'        => $report,
-            'referrals'     => $referrals,
+            'countries' => $countries,
+            'districts' => $districts,
+            'report' => $report,
+            'referrals' => $referrals,
             'availableTests' => $availableTests
         ]);
     }
@@ -167,15 +238,15 @@ class TestController extends Controller
     public function store(ReportCreateRequest $request)
     {
         $base64Image = $request->image;
-        $selectedTests = $request->input('tests'); 
-        $reportid = $request->input('report'); // Assuming you pass the report ID
+        $selectedTests = $request->input('forms');
         $validatedData = $request->validated();
         $validatedData['forms'] = json_encode($selectedTests);
         $report = Report::create($validatedData);
         if ($base64Image) {
             $report->addMediaFromBase64($base64Image)->usingFileName(uniqid() . '.jpeg')->toMediaCollection();
         }
-        return view('test-report.test-forms', compact('selectedTests', 'reportid'));
+        $countries = CountryListFacade::getList('en');
+        return redirect(route('test-report.edit', $report->id));
         // return to_route('reports.generals.create', $report)->with('status', 'Applicant Information added successfully');
     }
 
@@ -185,14 +256,14 @@ class TestController extends Controller
      */
     public function show(Report $report)
     {
-       
+
         $general = GeneralExam::where('report_id', $report->id)->first();
         $systemic = SystemicExam::where('report_id', $report->id)->first();
         $hematology = Hematology::where('report_id', $report->id)->first();
         $biochemistry = Biochemistry::where('report_id', $report->id)->first();
         $serology = Serology::where('report_id', $report->id)->first();
         $urine = Urine::where('report_id', $report->id)->first();
-        $other  = Other::where('report_id', $report->id)->first();
+        $other = Other::where('report_id', $report->id)->first();
         $user = User::where('id', $report->user_id)->first();
         return view('reports.show', [
             'user' => $user,
@@ -201,7 +272,7 @@ class TestController extends Controller
             'systemic' => $systemic,
             'hematology' => $hematology,
             'biochemistry' => $biochemistry,
-            'serology'  => $serology,
+            'serology' => $serology,
             'urine' => $urine,
             'other' => $other,
         ]);
@@ -211,42 +282,34 @@ class TestController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
-
     {
         $availableTests = [
             'hematology' => 'Hematology',
             'biochemistry' => 'Biochemistry',
             'serology' => 'Serology',
             'urine' => 'Urine',
-            'liver' => 'Liver',
-            'kidney' => 'Kidney',
-            'lipid' => 'Lipid',
-            'stool' => 'Stool',
-            'mantoux' => 'Mantoux',
-            'pregnancy' => 'Pregnancy',
-            'xray' => 'X-Ray',
-            'other' => 'Other'
+            'other' => 'Other',
         ];
-        $report = Report::findorFail($id);
+
+        $report = Report::findOrFail($id);
         $countries = CountryListFacade::getList('en');
-        $hematology = Hematology::where('report_id', $report->id)->first();
-        $biochemistry = Biochemistry::where('report_id', $report->id)->first();
-        $mantoux = MantouxTest::where('report_id', $report->id)->first();
         $selectedTests = json_decode($report->forms);
-        $serology = Serology::where('report_id', $report->id)->first();
-        $urine = Urine::where('report_id', $report->id)->first();
-        $other = Other::where('report_id', $report->id)->first();
         $referrals = Referral::query()->orderBy('name', 'asc')->get();
+
+        $testData = [];
+
+        foreach ($selectedTests as $test) {
+            if (array_key_exists($test, $availableTests)) {
+                $modelName = 'App\\Models\\' . ucfirst($test);
+                $testData[$test] = $modelName::where('report_id', $report->id)->first();
+            }
+        }
+
         return view('test-report.edit', [
             'report' => $report,
-            'hematology' => $hematology,
-            'biochemistry' => $biochemistry,
-            'serology'  => $serology,
-            'urine' => $urine,
             'selectedTests' => $selectedTests,
             'availableTests' => $availableTests,
-            'other' => $other,
-            'mantoux' => $mantoux,
+            'testData' => $testData,
             'countries' => $countries,
             'referrals' => $referrals
         ]);
@@ -255,18 +318,25 @@ class TestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ReportUpdateRequest $request, Report $report)
+    public function update(ReportUpdateRequest $request, string $id)
     {
-        $general = GeneralExam::where('report_id', $report->id)->first();
-        $report->update($request->validated());
-        if ($general) {
-            return to_route('reports.generals.edit', [
-                'report' => $report,
-                'general' => $general,
-            ])->with('status', 'Applicant Information updated successfully');
-        } else {
-            return to_route('reports.generals.create', $report)->with('status', 'Applicant Information updated successfully');
+        $report = Report::findOrFail($id);
+
+        $base64Image = $request->image;
+        $selectedTests = $request->input('forms');
+        $validatedData = $request->validated();
+        $validatedData['forms'] = json_encode($selectedTests);
+
+        $report->update($validatedData);
+
+        if ($base64Image) {
+            // Clear existing media if any
+            $report->clearMediaCollection();
+            // Add new image
+            $report->addMediaFromBase64($base64Image)->usingFileName(uniqid() . '.jpeg')->toMediaCollection();
         }
+
+        return redirect(route('test-report.edit', $report->id))->with('status', 'Report updated successfully');
     }
 
     /**
@@ -279,5 +349,5 @@ class TestController extends Controller
 
 
 
-    
+
 }

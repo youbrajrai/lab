@@ -27,7 +27,7 @@
                             <div class="card card-flush mb-10">
                                 <div class="card-body">
                                     <div class="table-responsive p-10">
-                                        @include('partials.formNav')
+                                        @include('partials.testFormNav')
                                         <form data-kt-search-element="form" class="w-100 position-relative mt-10"
                                             method="POST" action="{{ route('systemics.update', $systemic->report_id) }}">
                                             @csrf
@@ -222,7 +222,7 @@
                                                             <select name="hydrocele" aria-label="Select an Option"
                                                                 data-control="" data-placeholder="Hydrocele"
                                                                 class="form-select form-select-md form-select-solid">
-                                                                    <option value="Absent"
+                                                                <option value="Absent"
                                                                     @if (old('hydrocele') == 'Absent') selected @endif>
                                                                     Absent</option>
                                                                 {{-- <option value="Normal"
@@ -325,7 +325,9 @@
                                                                     @if (old('right_ear', $systemic) == 1) selected @endif>
                                                                     Normal</option>
                                                                 {{-- < --}}option value="0"
-                                                                    @if (old('right_ear', $systemic) == 0) selected @endif>Bad
+                                                                @if (old('right_ear', $systemic) == 0)
+                                                                    selected
+                                                                @endif>Bad
                                                                 </option> --}}
                                                             </select>
                                                             @error('right_ear')
@@ -338,7 +340,8 @@
                                                             <h6>Others</h6>
                                                             <input type="text" class="form-control" name="others"
                                                                 value="{{ old('others', $systemic) }}"
-                                                                placeholder="Others" data-kt-search-element="input" readonly />
+                                                                placeholder="Others" data-kt-search-element="input"
+                                                                readonly />
                                                             @error('others')
                                                                 <span class="invalid-feedback d-block" role="alert">
                                                                     <strong>{{ $message }}</strong>

@@ -29,13 +29,12 @@
                             <div class="card card-flush mb-10">
                                 <div class="card-body">
                                     <div class="table-responsive p-10">
-                                        @include('partials.formNav')
+                                        @include('partials.testFormNav')
                                         <form data-kt-search-element="form" class="w-100 position-relative mt-10"
                                             method="POST" action="{{ route('hematologies.store', $report) }}">
                                             @csrf
                                             <div class="tab-content">
-                                                <div class="tab-pane fade show active"
-                                                    id="kt_stats_widget_16_tab_1">
+                                                <div class="tab-pane fade show active" id="kt_stats_widget_16_tab_1">
                                                     <h3 class="mb-8">Hematology</h3>
                                                     <div class="row gx-10 gy-8 mb-14">
                                                         <div class="col-lg-4">
@@ -126,7 +125,7 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <h6>Malaria Parasite</h6>
                                                             <select name="malaria_parasite" aria-label="Select an Option"
@@ -135,9 +134,9 @@
                                                                 <option value="0"
                                                                     @if (old('malaria_parasite') == 0) selected @endif>
                                                                     Not Found</option>
-                                                                    {{-- <option value="1"
+                                                                <option value="1"
                                                                     @if (old('malaria_parasite') == 1) selected @endif>
-                                                                    Found</option> --}}
+                                                                    Found</option>
                                                             </select>
                                                             @error('malaria_parasite')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -145,7 +144,7 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <h6>Micro Filaria</h6>
                                                             <select name="mirco_filaria" aria-label="Select an Option"
@@ -154,9 +153,9 @@
                                                                 <option value="0"
                                                                     @if (old('mirco_filaria') == 0) selected @endif>
                                                                     Not Found</option>
-                                                                    {{-- <option value="1"
+                                                                <option value="1"
                                                                     @if (old('mirco_filaria') == 1) selected @endif>
-                                                                    Found</option> --}}
+                                                                    Found</option>
                                                             </select>
                                                             @error('mirco_filaria')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -164,8 +163,8 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
-                                                        
+
+
                                                     </div>
                                                 </div>
                                                 <div class="d-flex align-items-center gap-2 gap-lg-3 my-6">

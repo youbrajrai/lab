@@ -29,10 +29,11 @@
                             <div class="card card-flush mb-10">
                                 <div class="card-body">
                                     <div class="table-responsive p-10">
-                                        @include('partials.formNav')
-                                        
+                                        @include('partials.testFormNav')
+
                                         <form data-kt-search-element="form" class="w-100 position-relative mt-10"
-                                            method="POST" action="{{ route('others.update', $other->report_id) }}">
+                                            method="POST"
+                                            action="{{ route('others.update', $testData['other']->report_id) }}">
                                             @csrf
                                             @method('PATCH')
                                             <div class="tab-content">
@@ -45,11 +46,11 @@
                                                                 data-control="" data-placeholder="Opiates"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('opiates', $other) == 0) selected @endif>
+                                                                    @if (old('opiates', $testData['other']) == 0) selected @endif>
                                                                     Negative</option>
-                                                                {{-- <option value="1"
-                                                                    @if (old('opiates', $other) == 1) selected @endif>
-                                                                    Positive</option> --}}
+                                                                <option value="1"
+                                                                    @if (old('opiates', $testData['other']) == 1) selected @endif>
+                                                                    Positive</option>
                                                             </select>
                                                             @error('opiates')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -63,11 +64,11 @@
                                                                 data-control="" data-placeholder="Cannabies"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('cannabies', $other) == 0) selected @endif>
+                                                                    @if (old('cannabies', $testData['other']) == 0) selected @endif>
                                                                     Negative</option>
-                                                                {{-- <option value="1"
-                                                                    @if (old('cannabies', $other) == 1) selected @endif>
-                                                                    Positive</option> --}}
+                                                                <option value="1"
+                                                                    @if (old('cannabies', $testData['other']) == 1) selected @endif>
+                                                                    Positive</option>
                                                             </select>
                                                             @error('cannabies')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -81,11 +82,11 @@
                                                                 data-control="" data-placeholder="Mantoux Test"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="0"
-                                                                    @if (old('mantoux_test', $other) == 0) selected @endif>
+                                                                    @if (old('mantoux_test', $testData['other']) == 0) selected @endif>
                                                                     Negative</option>
-                                                                {{-- <option value="1"
-                                                                    @if (old('mantoux_test', $other) == 1) selected @endif>
-                                                                    Positive</option> --}}
+                                                                <option value="1"
+                                                                    @if (old('mantoux_test', $testData['other']) == 1) selected @endif>
+                                                                    Positive</option>
                                                             </select>
                                                             @error('mantoux_test')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -102,11 +103,11 @@
                                                                     data-placeholder="Urine Pregnancy Test"
                                                                     class="form-select form-select-md form-select-solid">
                                                                     <option value="0"
-                                                                        @if (old('urine_pregnancy_test', $other) == 0) selected @endif>
+                                                                        @if (old('urine_pregnancy_test', $testData['other']) == 0) selected @endif>
                                                                         Negative</option>
-                                                                    {{-- <option value="1"
-                                                                        @if (old('urine_pregnancy_test', $other) == 1) selected @endif>
-                                                                        Positive</option> --}}
+                                                                    <option value="1"
+                                                                        @if (old('urine_pregnancy_test', $testData['other']) == 1) selected @endif>
+                                                                        Positive</option>
                                                                 </select>
                                                                 @error('urine_pregnancy_test')
                                                                     <span class="invalid-feedback d-block" role="alert">
@@ -119,7 +120,7 @@
                                                         {{-- <div class="col-lg-4" bis_skin_checked="1">
                                                             <h6>Referred by</h6>
                                                             <input type="text" class="form-control" name="request_doctor"
-                                                                value="{{ old('request_doctor', $other) }}"
+                                                                value="{{ old('request_doctor', $testData['other']) }}"
                                                                 placeholder="Referred by" data-kt-search-element="input">
                                                             @error('request_doctor')
                                                                 <span class="invalid-feedback d-block" role="alert">
@@ -136,7 +137,7 @@
                                                             <h6>X-ray requested for</h6>
                                                             <input type="text" class="form-control"
                                                                 name="x_ray_requested_for"
-                                                                value="{{ old('x_ray_requested_for', $other) }}"
+                                                                value="{{ old('x_ray_requested_for', $testData['other']) }}"
                                                                 placeholder="X-ray requested for"
                                                                 data-kt-search-element="input">
                                                             @error('x_ray_requested_for')
@@ -151,10 +152,10 @@
                                                                 data-control="" data-placeholder="Clinical history"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="1"
-                                                                    @if (old('clinical_history', $other) == 1) selected @endif>Normal
+                                                                    @if (old('clinical_history', $testData['other']) == 1) selected @endif>Normal
                                                                 </option>
                                                                 <option value="0"
-                                                                    @if (old('clinical_history', $other) == 0) selected @endif>Bad
+                                                                    @if (old('clinical_history', $testData['other']) == 0) selected @endif>Bad
                                                                 </option>
                                                             </select>
                                                             @error('clinical_history')
@@ -167,7 +168,7 @@
                                                             <h6>Request by Dr.</h6>
                                                             <input type="text" class="form-control"
                                                                 name="request_doctor"
-                                                                value="{{ old('request_doctor', $other) }}"
+                                                                value="{{ old('request_doctor', $testData['other']) }}"
                                                                 placeholder="Request by Dr."
                                                                 data-kt-search-element="input">
                                                             @error('request_doctor')
@@ -179,7 +180,7 @@
                                                         <div class="col-lg-4" bis_skin_checked="1">
                                                             <h6>Radiologist's Opinion</h6>
                                                             <textarea class="form-control" id="radiologists_opinion" name="opinion" rows="3"
-                                                                placeholder="Radiologist's Opinion">{{ old('opinion', $other) }}</textarea>
+                                                                placeholder="Radiologist's Opinion">{{ old('opinion', $testData['other']) }}</textarea>
                                                             @error('opinion')
                                                                 <span class="invalid-feedback d-block" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -192,10 +193,10 @@
                                                                 data-control="" data-placeholder="Defect Seen"
                                                                 class="form-select form-select-md form-select-solid">
                                                                 <option value="1"
-                                                                    @if (old('defect_seen', $other) == 1) selected @endif>
+                                                                    @if (old('defect_seen', $testData['other']) == 1) selected @endif>
                                                                     Normal</option>
                                                                 <option value="0"
-                                                                    @if (old('defect_seen', $other) == 0) selected @endif>Bad
+                                                                    @if (old('defect_seen', $testData['other']) == 0) selected @endif>Bad
                                                                 </option>
                                                             </select>
                                                             @error('defect_seen')
@@ -211,7 +212,7 @@
                                                             <h6>Total cholestrol</h6>
                                                             <input type="number" step="any" class="form-control"
                                                                 name="total_cholestrol"
-                                                                value="{{ old('total_cholestrol', $other) }}"
+                                                                value="{{ old('total_cholestrol', $testData['other']) }}"
                                                                 placeholder="Total cholestrol"
                                                                 data-kt-search-element="input">
                                                             @error('total_cholestrol')
@@ -224,7 +225,7 @@
                                                             <h6>HDL cholestrol</h6>
                                                             <input type="number" step="any" class="form-control"
                                                                 name="hdl_cholestrol"
-                                                                value="{{ old('hdl_cholestrol', $other) }}"
+                                                                value="{{ old('hdl_cholestrol', $testData['other']) }}"
                                                                 placeholder="HDL cholestrol"
                                                                 data-kt-search-element="input">
                                                             @error('hdl_cholestrol')
@@ -237,7 +238,7 @@
                                                             <h6>LDL cholestrol</h6>
                                                             <input type="number" step="any" class="form-control"
                                                                 name="ldl_cholestrol"
-                                                                value="{{ old('ldl_cholestrol', $other) }}"
+                                                                value="{{ old('ldl_cholestrol', $testData['other']) }}"
                                                                 placeholder="LDL cholestrol"
                                                                 data-kt-search-element="input">
                                                             @error('ldl_cholestrol')
@@ -250,7 +251,7 @@
                                                             <h6>Triglyceride</h6>
                                                             <input type="number" step="any" class="form-control"
                                                                 name="triglyceride"
-                                                                value="{{ old('triglyceride', $other) }}"
+                                                                value="{{ old('triglyceride', $testData['other']) }}"
                                                                 placeholder="Triglyceride" data-kt-search-element="input">
                                                             @error('triglyceride')
                                                                 <span class="invalid-feedback d-block" role="alert">

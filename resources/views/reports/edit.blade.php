@@ -27,7 +27,7 @@
                             <div class="card card-flush mb-10">
                                 <div class="card-body">
                                     <div class="table-responsive p-10">
-                                        @include('partials.formNav')
+                                        @include('partials.testFormNav')
                                         <form data-kt-search-element="form" class="w-100 position-relative mt-10"
                                             method="POST" action="{{ route('reports.update', $report) }}">
                                             @csrf
@@ -38,7 +38,7 @@
                                                     <h3 class="mb-8">Applicant Info</h3>
 
                                                     <div class="row gx-10 gy-8 mb-14">
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <h6>C.N.O.</h6>
                                                             <input type="text" class="form-control"
@@ -123,7 +123,7 @@
                                                                 </span>
                                                             @enderror
                                                         </div>
-                                                        
+
                                                         <div class="col-lg-4">
                                                             <h6>Contact</h6>
                                                             <input type="text" class="form-control" name="contact"
@@ -164,7 +164,8 @@
                                                             <input type="text" class="form-control"
                                                                 name="passport_number"
                                                                 value="{{ old('passport_number', $report) }}"
-                                                                placeholder="Passport No." data-kt-search-element="input" />
+                                                                placeholder="Passport No."
+                                                                data-kt-search-element="input" />
                                                             @error('passport_number')
                                                                 <span class="invalid-feedback d-block" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -253,13 +254,13 @@
                                                             <select name="referred_by" aria-label="Select an Option"
                                                                 data-control="select2" data-placeholder="Referred By"
                                                                 class="form-select form-select-md form-select-solid">
-                                                                
+
                                                                 @foreach ($referrals as $key => $referral)
                                                                     <option value="{{ $referral->id }}"
                                                                         @selected($report->referred_by == $referral->id)>{{ $referral->name }}
                                                                     </option>
                                                                 @endforeach
-                                                                
+
                                                                 {{-- <option value="Casey Wells" @selected($report->referred_by === 'Casey Wells')>
                                                                     Casey Wells
                                                                 </option>
@@ -269,7 +270,7 @@
                                                                 <option value="Madison Bird" @selected($report->referred_by === 'Madison Bird')>
                                                                     Madison Bird
                                                                 </option> --}}
-                                                                
+
                                                             </select>
                                                             @error('referred_by')
                                                                 <span class="invalid-feedback d-block" role="alert">

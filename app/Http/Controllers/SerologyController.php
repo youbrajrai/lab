@@ -13,6 +13,8 @@ use App\Models\Serology;
 use App\Models\SystemicExam;
 use App\Models\Urine;
 use Illuminate\Http\Request;
+use App\Models\Referral;
+use Monarobase\CountryList\CountryListFacade;
 
 class SerologyController extends Controller
 {
@@ -29,22 +31,35 @@ class SerologyController extends Controller
      */
     public function create(Report $report)
     {
-        $systemic = SystemicExam::where('report_id', $report->id)->first();
-        $general = GeneralExam::where('report_id', $report->id)->first();
-        $hematology = Hematology::where('report_id', $report->id)->first();
-        $biochemistry = Biochemistry::where('report_id', $report->id)->first();
-        $serology = Serology::where('report_id', $report->id)->first();
-        $urine = Urine::where('report_id', $report->id)->first();
-        $other = Other::where('report_id', $report->id)->first();
+        $availableTests = [
+            'hematology' => 'Hematology',
+            'biochemistry' => 'Biochemistry',
+            'serology' => 'Serology',
+            'urine' => 'Urine',
+            'other' => 'Other',
+        ];
+
+        $report = Report::findOrFail($report->id);
+        $countries = CountryListFacade::getList('en');
+        $selectedTests = json_decode($report->forms);
+        $referrals = Referral::query()->orderBy('name', 'asc')->get();
+
+        $testData = [];
+
+        foreach ($selectedTests as $test) {
+            if (array_key_exists($test, $availableTests)) {
+                $modelName = 'App\\Models\\' . ucfirst($test);
+                $testData[$test] = $modelName::where('report_id', $report->id)->first();
+            }
+        }
+
         return view('serology.create', [
-            'report'        => $report,
-            'general'       => $general,
-            'systemic'      => $systemic,
-            'hematology'    => $hematology,
-            'biochemistry'  => $biochemistry,
-            'serology'      => $serology,
-            'urine'         => $urine,
-            'other'         => $other,
+            'report' => $report,
+            'selectedTests' => $selectedTests,
+            'availableTests' => $availableTests,
+            'testData' => $testData,
+            'countries' => $countries,
+            'referrals' => $referrals
         ]);
     }
 
@@ -54,8 +69,8 @@ class SerologyController extends Controller
     public function store(SerologyCreateRequest $request, Report $report)
     {
         $report->serologies()->create($request->validated());
-        return to_route('urines.create', $report)->with([
-            'success' => 'Biochemistry Results added successfully'
+        return to_route('test-report.edit', $report)->with([
+            'success' => 'serology Results added successfully'
         ]);
     }
 
@@ -72,22 +87,34 @@ class SerologyController extends Controller
      */
     public function edit(Report $report)
     {
-        $systemic = SystemicExam::where('report_id', $report->id)->first();
-        $general = GeneralExam::where('report_id', $report->id)->first();
-        $hematology = Hematology::where('report_id', $report->id)->first();
-        $biochemistry = Biochemistry::where('report_id', $report->id)->first();
-        $serology = Serology::where('report_id', $report->id)->first();
-        $urine = Urine::where('report_id', $report->id)->first();
-        $other = Other::where('report_id', $report->id)->first();
+        $availableTests = [
+            'hematology' => 'Hematology',
+            'biochemistry' => 'Biochemistry',
+            'serology' => 'Serology',
+            'urine' => 'Urine',
+            'other' => 'Other',
+        ];
+
+        $report = Report::findOrFail($report->id);
+        $countries = CountryListFacade::getList('en');
+        $selectedTests = json_decode($report->forms);
+        $referrals = Referral::query()->orderBy('name', 'asc')->get();
+
+        $testData = [];
+
+        foreach ($selectedTests as $test) {
+            if (array_key_exists($test, $availableTests)) {
+                $modelName = 'App\\Models\\' . ucfirst($test);
+                $testData[$test] = $modelName::where('report_id', $report->id)->first();
+            }
+        }
+
         return view('serology.edit', [
-            'report'        => $report,
-            'general'       => $general,
-            'systemic'      => $systemic,
-            'hematology'    => $hematology,
-            'biochemistry'  => $biochemistry,
-            'serology'      => $serology,
-            'urine'         => $urine,
-            'other'         => $other,
+            'report' => $report,
+            'selectedTests' => $selectedTests,
+            'availableTests' => $availableTests,
+            'testData' => $testData,
+            'countries' => $countries,
         ]);
     }
 
@@ -97,15 +124,9 @@ class SerologyController extends Controller
     public function update(SerologyUpdateRequest $request, Report $report)
     {
         $report->serologies()->update($request->validated());
-        $urine = Urine::where('report_id', $report->id)->first();
-        if ($urine) {
-            return to_route('urines.edit', [
-                'report' => $report,
-                'urine' => $urine,
-            ])->with('status', 'Urine results updated successfully');
-        } else {
-            return to_route('urines.create', $report)->with('status', 'Biochemistry results updated successfully');
-        }
+        return to_route('test-report.edit', $report)->with([
+            'success' => 'Serology Results added successfully'
+        ]);
     }
 
     /**
